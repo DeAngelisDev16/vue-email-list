@@ -4,6 +4,7 @@ createApp({
   data() {
     return {
         randomEmail:null,
+        emailList:[],
         
       
     }
@@ -14,16 +15,30 @@ createApp({
           .then( (response) => {
               console.log(response.data.response);
               this.randomEmail = response.data.response;
+             
             
           })
 
     },
+    addElementsToArray(){
+        while(this.emailList.length < 9){
+            this.getRandomEmail();
+            this.emailList.push(this.randomEmail);
+        }
+        console.log(this.randomEmail);
+            
+            
+         
+            
+    }
     
         
     
   },
   created(){
     this.getRandomEmail();
+    this.addElementsToArray();
+
    
 
   }
